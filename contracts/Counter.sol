@@ -1,5 +1,8 @@
-//SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
+
+//SPDX-License-Identifier: Unlicense
+
+import "./SafeMath.sol";
 
 contract Counter {
     using SafeMath for uint256;
