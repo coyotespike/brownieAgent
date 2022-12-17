@@ -17,6 +17,7 @@ class ContractCaller:
         except:
             # If the contract is not deployed, we deploy it
             tx = contract_class.deploy({'from': accounts[0]})
+            print(f"Deployed {contract_name} to {tx.address}")
 
             self.contract = contract_class.at(tx)
 

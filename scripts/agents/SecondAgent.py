@@ -11,8 +11,8 @@ dotenv.load_dotenv()
 from .ContractCaller import ContractCaller
 
 
-def SecondAgent():
-    contract_caller = ContractCaller("Counter", "0x3194cBDC3dbcd3E11a07892e7bA5c3394048Cc87", {"inc": "increment", "dec": "decrement", "get": "getCount"})
+def SecondAgent(contract_address):
+    contract_caller = ContractCaller("Counter", contract_address, {"inc": "increment", "dec": "decrement", "get": "getCount"})
     account_object = {'from': accounts[0]}
     tools = [
         Tool(name = "inc",
@@ -41,7 +41,3 @@ def SecondAgent():
 
 
     agent.run("Check the current value of the counter. If it is ever 0 or 25, you don't need to do anything. If it is not 0 or 25, increment it until it is 25. Check your work at the end. If it is ever 0, you can also stop.")
-
-
-def main():
-    SecondAgent()

@@ -9,11 +9,11 @@ contract Counter {
     uint256 public count;
 
     function increment() public {
-        count.add(1);
+        count = SafeMath.add(count, 1);
     }
 
     function decrement() public {
-        count.sub(1);
+        count = SafeMath.sub(count, 1);
     }
 
     function reset() public {

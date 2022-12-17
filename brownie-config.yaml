@@ -1,5 +1,6 @@
 # exclude SafeMath when calculating test coverage
 # https://eth-brownie.readthedocs.io/en/v1.10.3/config.html#exclude_paths
+dev_deployment_artifacts: true
 reports:
   exclude_contracts:
     - SafeMath
