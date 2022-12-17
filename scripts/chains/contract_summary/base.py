@@ -8,7 +8,7 @@ from langchain.input import print_text
 from langchain.llms.base import LLM
 from langchain.utilities.bash import BashProcess
 
-from .prompt import PROMPT
+import prompt
 
 
 class ContractSummaryChain(Chain, BaseModel):
@@ -49,7 +49,7 @@ class ContractSummaryChain(Chain, BaseModel):
         return [self.output_key]
 
     def _call(self, inputs: Dict[str, str]) -> Dict[str, str]:
-        llm_executor = LLMChain(prompt=PROMPT, llm=self.llm)
+        llm_executor = LLMChain(prompt=prompt.PROMPT, llm=self.llm)
         bash_executor = BashProcess()
         if self.verbose:
             print_text(inputs[self.input_key])

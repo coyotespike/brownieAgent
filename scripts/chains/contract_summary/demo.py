@@ -8,9 +8,14 @@ sys.modules[spec.name] = module
 spec.loader.exec_module(module)
 
 
-from .base import ContractSummaryChain
+# Import the built-in `open` function to open a file
+from builtins import open
+
+# from .base import ContractSummaryChain
+import base
 
 from langchain.llms import OpenAI
+from langchain.agents import Tool
 
 import dotenv
 
@@ -46,7 +51,19 @@ contract Counter {
     }
 }
 """
+# Specify the filepath
+filepath = '/Users/timothy/Documents/1Projects/Solidity/brownie-counter/contracts/Counter.sol'
 
-bash_chain = ContractSummaryChain(llm=llm, verbose=True)
-bash_chain.run({'contract': text})
+# Open the file in read-only mode
+with open(filepath, 'r') as file:
+    # Read in the entire contents of the file
+    file_contents = file.read()
+    # Print the contents of the file
+    print(file_contents)
+    text = file_contents
 
+
+bash_chain = base.ContractSummaryChain(llm=llm, verbose=True)
+output = bash_chain.run({'contract': text})
+tools = eval(output)
+print(tools)
